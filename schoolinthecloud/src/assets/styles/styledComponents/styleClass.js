@@ -23,12 +23,12 @@ const style = new Styler();
 export default class Styler{
 
     Link(props){
+
         const Link = Styled.a`
             display: flex;
             flex-wrap: wrap;
             height: 15px;
-            transition: .25s all ease-in-out;
-            
+            transition: .25s all ease-in-out;            
             height: ${props.height};
             letter-spacing: 2px;
             letter-spacing: ${props.letterSpacing};
@@ -45,13 +45,12 @@ export default class Styler{
             }      
         `;
 
-
         return <Link>{props.text}</Link>
     }
 
     Text(props){
-        const Text = Styled.div`
-            
+
+        const Text = Styled.div`            
             height:${props.height};
             width: ${props.width};
             font-size: ${props.fontSize};
@@ -77,19 +76,18 @@ export default class Styler{
         background-size: contain;
         background-fit: center center;
         margin-right: 10px;
-        margin-top: 5px;
-        
+        margin-top: 5px;        
         height: ${props.height};
         width: ${props.width};
-        margin: ${props.margin};
-        
+        margin: ${props.margin};        
     `;
 
         return <Image />
     }
 
     Button(props){
-        const Buttoner = Styled.div`
+
+        const Button = Styled.div`
             width: 150px;
             display: inline-block;
             padding: 8px 11px;
@@ -103,8 +101,7 @@ export default class Styler{
             background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
             color: black;
             cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);            
             margin: ${props.margin};
             width:${props.width};
             height:${props.height};
@@ -118,12 +115,10 @@ export default class Styler{
                 background-color: #4dd0e1;
                 box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
             
-            }
-            
-        
+            }       
         `;
 
-        return <Buttoner>{props.text}</Buttoner>
+        return <Button>{props.text}</Button>
     }
 
 }
