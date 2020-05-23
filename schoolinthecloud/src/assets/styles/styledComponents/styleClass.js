@@ -1,6 +1,25 @@
 import React from 'react';
 import Styled from 'styled-components';
 
+/*
+Class using Styled-Components library so we can quickly implement
+components. Default values will be implemented on any values without a
+prop passed in. Passing in a prop will overwrite the default values found here.
+example use:
+
+*import class
+
+*call class with const
+const style = new Styler();
+
+*use class method to create button
+<style.Button
+    text="Get Started"
+    bgColor ="#00aced"
+    margin ="10px auto"
+/>
+*/
+
 export default class Styler{
 
     Link(props){
