@@ -22,6 +22,25 @@ const style = new Styler();
 
 export default class Styler{
 
+    Form(props){
+        const Form = Styled.form`
+        width:100%;
+        height: 100px;
+        display:flex;
+        flex-wrap:wrap:
+        align-content:center;
+        justify-content:center;
+        background-color:red;
+        position: absolute;
+        left:50%;
+        top: 50%;
+        transform:translate(-50%,-50%);
+        `;
+
+        return <Form />
+
+    }
+
     Link(props){
 
         const Link = Styled.a`
@@ -45,7 +64,7 @@ export default class Styler{
             }      
         `;
 
-        return <Link>{props.text}</Link>
+        return <Link onClick={props.clickHandler}>{props.text}</Link>
     }
 
     Text(props){
@@ -87,7 +106,7 @@ export default class Styler{
 
     Button(props){
 
-        const Button = Styled.div`
+        const Button = Styled.button`
             width: 150px;
             display: inline-block;
             padding: 8px 11px;
@@ -118,7 +137,13 @@ export default class Styler{
             }       
         `;
 
-        return <Button>{props.text}</Button>
+        return <Button
+            onClick ={props.clickHandler}
+            type = {props.type}
+        >
+            {props.text}
+
+        </Button>
     }
 
 }

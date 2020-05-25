@@ -64,6 +64,32 @@ header .headliner {
   font-weight: normal;
   font-style: normal;
 }
+.signInForm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 70px;
+  border-radius: 9px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.signInForm .signInTitle {
+  width: 100%;
+  font-family: 'gPro';
+  font-size: 30px;
+  letter-spacing: 3px;
+  padding-left: 30px;
+  color: black;
+}
+.signInForm .signInInput {
+  width: 300px;
+}
 html,
 body {
   padding: 0;
@@ -87,24 +113,24 @@ html {
 }
 form {
   display: flex;
-  flex-direction: column;
-  width: 90%;
-  max-width: 300px;
   margin: 0 auto;
 }
 label {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   flex-direction: column;
   align-items: flex-start;
+  align-content: center;
   margin: 10px 0;
   font-size: 1.4rem;
+  width: 100%;
 }
 input,
 select,
 textarea {
   margin: 5px 0 0;
   display: block;
-  width: 100%;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 10px;

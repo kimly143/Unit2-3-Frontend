@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import cloud from '../../assets/images/cloud.webp';
 
 // import class for style components
 import Styler from "../../assets/styles/styledComponents/styleClass";
+import SignIn from "../forms/signin";
 
 export default function Header(props){
 
     const style = new Styler();
+
+    const [signInState, setSignInState] = useState(false);
+
+    const bodyClicker = (e) =>{
+        return e.target.className === "headliner" && signInState ? setSignInState(!signInState) : null;
+    };
+
+    const signInClick = (e) =>{
+        setSignInState(!signInState)
+    };
 
     return(
 
@@ -43,6 +54,9 @@ export default function Header(props){
                         color="#fff"
                         fontFamily ="gPro"
                         hoverColor="#00aced"
+                        name="signIn"
+                        id="signInID"
+                        clickHandler = {signInClick}
                     />
 
                     <style.Link
@@ -57,17 +71,21 @@ export default function Header(props){
 
             </nav>
 
-            <section className="headliner">
+            <section className="headliner"
+            onClick={bodyClicker}
+            >
 
-                <style.Text
-                    margin="auto auto 0 auto"
-                    fontSize ="40px"
-                    fontFamily="proxima_novaregular"
-                    text ="Educational Mentoring Service for children who need it most "
-                    color="white"
-                />
+                {signInState ? <SignIn /> :
+                    <>
+                    <style.Text
+                        margin="auto auto 0 auto"
+                        fontSize ="40px"
+                        fontFamily="proxima_novaregular"
+                        text ="Educational Mentoring Service for children who need it most "
+                        color="white"
+                    />
 
-                <style.Text
+                    <style.Text
                     width="100%"
                     margin="0 auto"
                     fontSize ="25px"
@@ -75,13 +93,20 @@ export default function Header(props){
                     text ="Our hope is to lighten the burden of overworked teachers and parents"
                     textAlign="center"
                     color="white"
-                />
+                    />
 
-                <style.Button
+                    <style.Button
                     text="Get Started"
                     bgColor ="#00aced"
                     margin ="10px auto"
-                />
+                    clickHandler = {signInClick}
+                    />
+
+                    </>
+
+                }
+
+
 
             </section>
 
