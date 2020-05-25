@@ -1,3 +1,4 @@
+
 header {
   display: flex;
   flex-wrap: wrap;
@@ -151,7 +152,7 @@ input:focus {
   outline: none;
   border-color: #1ee7e2;
 }
-input:placeholder {
+input::placeholder {
   color: #a8b2b2;
 }
 button {
@@ -184,7 +185,7 @@ button:disabled {
 }
 .error {
   font-size: 1.2rem;
-  color: red;
+  color: #ff0000;
 }
 .terms {
   display: inline-block;
