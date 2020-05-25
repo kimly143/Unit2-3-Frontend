@@ -2,36 +2,40 @@ import React,{useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
-
+// import styler class for styled components
 import Styler from "../../assets/styles/styledComponents/styleClass";
 
 export default function SignInForm(props){
 
+    // create new instance of styler class
     const style = new Styler();
 
+    // set up yup validation
     const formSchema = yup.object().shape({
 
         userName: yup
             .string()
-            .required("Username is required")
-            .min(4,"Username must be longer than 4 characters"),
+            .required("Please enter your username")
+            .min(4,"Username should be longer than 4 characters"),
         password: yup
             .string()
-            .required("must enter password")
-            .min(3,"password must be longer than 3 characters")
+            .required("Please enter your password")
+            .min(3,"Password should be longer than 3 characters")
 
     });
 
+    // Form state and error state respectively
     const [formState, setFormState] = useState({
         userName:"",
         password:""
     });
 
     const [errorState, setErrorState] = useState({
-        name:"",
+        userName:"",
         password: ""
     });
 
+    // validation on input change
     const validate = e => {
         yup
             .reach(formSchema, e.target.name)
@@ -75,7 +79,7 @@ export default function SignInForm(props){
 
         <form onSubmit={formSubmit} className="signInForm">
 
-            <h2 className="signInTitle">SignIn</h2>
+            <h2 className="signInTitle">Sign In</h2>
 
             <label htmlFor="userName">
 
@@ -92,6 +96,10 @@ export default function SignInForm(props){
 
             </label>
 
+            {errorState.userName.length > 0 ? (
+                <p className="error">{errorState.userName}</p>
+            ) : null}
+
             <label htmlFor="password">
 
                 Password:
@@ -106,6 +114,10 @@ export default function SignInForm(props){
                     />
 
             </label>
+
+            {errorState.password.length > 0 ? (
+                <p className="error">{errorState.password}</p>
+            ) : null}
 
             <style.Button
             text="login"
