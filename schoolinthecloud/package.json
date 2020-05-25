@@ -36,6 +36,9 @@
     ]
   },
   "devDependencies": {
-    "redux-devtools": "^3.5.0"
+    "axios": "^0.19.2",
+    "redux-devtools": "^3.5.0",
+    "styled-components": "^5.1.0",
+    "yup": "^0.29.0"
   }
 }
