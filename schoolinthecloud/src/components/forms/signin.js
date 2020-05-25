@@ -15,12 +15,12 @@ export default function SignInForm(props){
 
         userName: yup
             .string()
-            .required("Username is required")
-            .min(4,"Username must be longer than 4 characters"),
+            .required("Please enter your username")
+            .min(4,"Username should be longer than 4 characters"),
         password: yup
             .string()
-            .required("must enter password")
-            .min(3,"password must be longer than 3 characters")
+            .required("Please enter your password")
+            .min(3,"Password should be longer than 3 characters")
 
     });
 
@@ -31,7 +31,7 @@ export default function SignInForm(props){
     });
 
     const [errorState, setErrorState] = useState({
-        name:"",
+        userName:"",
         password: ""
     });
 
@@ -96,6 +96,10 @@ export default function SignInForm(props){
 
             </label>
 
+            {errorState.userName.length > 0 ? (
+                <p className="error">{errorState.userName}</p>
+            ) : null}
+
             <label htmlFor="password">
 
                 Password:
@@ -110,6 +114,10 @@ export default function SignInForm(props){
                     />
 
             </label>
+
+            {errorState.password.length > 0 ? (
+                <p className="error">{errorState.password}</p>
+            ) : null}
 
             <style.Button
             text="login"

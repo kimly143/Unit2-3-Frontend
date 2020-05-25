@@ -146,23 +146,31 @@ export default function Register(props){
     };
 
     const formSubmit = e => {
-        console.log('submit');
-        console.log(formState);
         e.preventDefault();
-        axios
-            .post("")
-            .then(response => {
-                console.log(response)
-            })
-            .catch( err => {
-                console.log(err)
-            })
+        // If volunteer is selected post to volunteer api else submit to student api
+        formState.selector === 'volunteer'?
+            axios
+                .post("")
+                .then(response => {
+                    console.log(response)
+                })
+                .catch( err => {
+                    console.log(err)
+                })
+        :
+            axios
+                .post("")
+                .then(response => {
+                    console.log(response)
+                })
+                .catch( err => {
+                    console.log(err)
+                })
     };
 
     const inputChange = e =>{
         e.persist();
         validate(e);
-        console.log(e.target.value);
         let value = e.target.type === "checkbox" ? e.target.checked:e.target.value
         setFormState({...formState, [e.target.name]:value})
     };
