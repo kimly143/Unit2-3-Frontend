@@ -5,27 +5,41 @@ import cloud from '../../assets/images/cloud.webp';
 // import class for style components
 import Styler from "../../assets/styles/styledComponents/styleClass";
 import SignIn from "../forms/signin";
+import Register from "../forms/register";
 
 export default function Header(props){
 
     const style = new Styler();
 
+    // States used to manage if signin/register windows should be mounted
     const [signInState, setSignInState] = useState(false);
+    const [registerState, setRegisterState] = useState(false);
 
+    // This function will disable modal popup of sign up and register windows respectively on body click
     const bodyClicker = (e) =>{
-        return e.target.className === "headliner" && signInState ? setSignInState(!signInState) : null;
+        return e.target.className === "headliner" && signInState && !registerState ? setSignInState(!signInState)
+            : e.target.className === "headliner" && registerState && !signInState ? setRegisterState(!registerState)
+            : null;
     };
 
+    // Shows the signin window and ensures the register state is set to false
     const signInClick = (e) =>{
+        setRegisterState(false);
         setSignInState(!signInState)
     };
+
+    // Shows the register window and ensures the signin state is set to false
+    const registerClick = (e) =>{
+        setSignInState(false);
+        setRegisterState(!registerState);
+    }
 
     return(
 
         <header>
 
             <nav>
-
+                {/*Left side title in header-nav*/}
                 <section className="leftNav">
 
                     <style.Text
@@ -38,7 +52,7 @@ export default function Header(props){
                         lineHeight="60px"
 
                     />
-
+                    {/*Image for School in the cloud logo*/}
                     <style.Image
                         url = {cloud}
                         margin="auto 0 auto 10px"
@@ -46,8 +60,10 @@ export default function Header(props){
 
                 </section>
 
+                {/*Right side of header used for nav links*/}
                 <section className="rightNav">
 
+                    {/*Nav link using my styling class-values sent down as props*/}
                     <style.Link
                         text="Login"
                         fontSize= "15px"
@@ -65,6 +81,7 @@ export default function Header(props){
                         color="#fff"
                         fontFamily ="gPro"
                         hoverColor="#00aced"
+                        clickHandler = {registerClick}
                     />
 
                 </section>
@@ -74,9 +91,12 @@ export default function Header(props){
             <section className="headliner"
             onClick={bodyClicker}
             >
+                {/*If signin or register state is true will remove h1 text and subtext and mount signin or register window*/}
+                {signInState && !registerState ? <SignIn /> :
+                    !signInState && registerState ? <Register /> :
 
-                {signInState ? <SignIn /> :
                     <>
+
                     <style.Text
                         margin="auto auto 0 auto"
                         fontSize ="40px"
@@ -105,6 +125,7 @@ export default function Header(props){
                     </>
 
                 }
+
 
 
 

@@ -75,7 +75,7 @@ export default function SignInForm(props){
 
         <form onSubmit={formSubmit} className="signInForm">
 
-            <h2 className="signInTitle">SignIn</h2>
+            <h2 className="signInTitle">Sign In</h2>
 
             <label htmlFor="userName">
 
