@@ -1,18 +1,21 @@
-
+import React, {useState} from "react";
 import * as yup from 'yup';
 import axios from 'axios';
 
+// import styler class for styled components
 import Styler from "../../assets/styles/styledComponents/styleClass";
-import React, {useState} from "react";
 
 export default function Register(props){
 
+    // create new instance of styler class
     const style = new Styler();
 
     //Used to test field validation with taken username values from backend.
     const testerFieldForUsernameAvailability = ['thisss','isaaa','tester'];
 
+    // set up yup validation
     const formSchema_Student = yup.object().shape({
+
         selector: yup
             .string(),
         userName: yup
@@ -99,7 +102,7 @@ export default function Register(props){
             .required("Please confirm our terms and conditions")
             .oneOf([true],"Please agree to our terms and conditions")
     });
-
+    // Form state and error state respectively
     const [formState, setFormState] = useState({
         selector:"",
         userName:"",
@@ -125,7 +128,7 @@ export default function Register(props){
         time:"",
         terms:false
     });
-
+    // validation on input change
     const validate = e => {
         yup
             .reach(formSchema_Student, e.target.name)
@@ -209,8 +212,6 @@ export default function Register(props){
                 ) : null}
 
             </label>
-
-
 
             <label htmlFor="password" className="registerLabel">
 
@@ -364,10 +365,6 @@ export default function Register(props){
                 Terms Of Service
 
             </label>
-
-
-
-
 
             <style.Button
                 text="Register"

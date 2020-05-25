@@ -2,13 +2,15 @@ import React,{useState, useEffect} from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 
-
+// import styler class for styled components
 import Styler from "../../assets/styles/styledComponents/styleClass";
 
 export default function SignInForm(props){
 
+    // create new instance of styler class
     const style = new Styler();
 
+    // set up yup validation
     const formSchema = yup.object().shape({
 
         userName: yup
@@ -22,6 +24,7 @@ export default function SignInForm(props){
 
     });
 
+    // Form state and error state respectively
     const [formState, setFormState] = useState({
         userName:"",
         password:""
@@ -32,6 +35,7 @@ export default function SignInForm(props){
         password: ""
     });
 
+    // validation on input change
     const validate = e => {
         yup
             .reach(formSchema, e.target.name)
