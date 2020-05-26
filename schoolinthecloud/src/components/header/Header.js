@@ -1,25 +1,23 @@
+// Dependancies
 import React, { useState } from 'react';
 import cloud from '../../assets/images/cloud.webp';
 import Navigation from './Navigation';
 
-// import styled components
-// import Styler from '../../assets/styles/styledComponents/styleClass';
-import Button from '../buttons/Button';
+// Import Styled Components
+import Button from '../buttons/Buttons';
 import Text from '../styled/Text';
 import Image from '../styled/Image';
 import SignInForm from '../forms/SignInForm';
 import Register from '../forms/Register.js';
 
 export default function Header(props) {
-	// const style = new Styler();
-
 	// States used to manage if signin/register windows should be mounted
 	const [signInState, setSignInState] = useState(false);
 	const [registerState, setRegisterState] = useState(false);
 
 	// This function will disable modal popup of sign up and register windows respectively on body click
 	const bodyClicker = (e) => {
-		console.log("bodyClicked");
+		console.log('bodyClicked');
 		return e.target.className === 'headliner' && signInState && !registerState
 			? setSignInState(!signInState)
 			: e.target.className === 'headliner' && registerState && !signInState
@@ -27,7 +25,7 @@ export default function Header(props) {
 			: null;
 	};
 
-	console.log(signInState);
+	// console.log(signInState);
 
 	// Shows the signin window and ensures the register state is set to false
 	const signInClick = (e) => {
@@ -55,29 +53,21 @@ export default function Header(props) {
 						lineHeight="60px"
 						text="School in the Cloud"
 					>
-						School in the Cloud{' '}
+						<p>School in the Cloud</p>
 					</Text>
 
 					{/*Image for School in the cloud logo*/}
-					<Image
-						url={cloud}
-						margin="auto 0 auto 10px"
-
-					/>
+					<Image url={cloud} margin="auto 0 auto 10px" />
 				</section>
 
 				{/*Right side of header used for nav links*/}
-				{/* Added Navigation compoent for routing*/}
-				<section className="rightNav">
-					<Navigation props={props} clickHandler={signInClick}
-					signInState = {signInState}
-					registerState = {registerState}
-					/>
-				</section>
+				{/* Added Navigation component for routing*/}
+				<section className="rightNav">{/* <Navigation props={props} /> */}</section>
 			</nav>
 
-			<section className="headliner" onClick={bodyClicker}>
-				{/*If signin or register state is true will remove h1 text and subtext and mount signin or register window*/}
+			<section className="headliner">
+				If signin or register state is true will remove h1 text and subtext and
+				mount signin or register window
 				{signInState && !registerState ? (
 					<SignInForm />
 				) : !signInState && registerState ? (
@@ -103,11 +93,12 @@ export default function Header(props) {
 						/>
 
 						<Button
-							text="Get Started"
 							bgColor="#00aced"
 							margin="10px auto"
 							clickHandler={registerClick}
-						/>
+						>
+							Get Started!
+						</Button>
 					</>
 				)}
 			</section>

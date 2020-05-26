@@ -2,11 +2,11 @@ import React from 'react';
 import Register from '../forms/Register';
 import Header from '../header/Header';
 
-const Home = () => {
+const Home = (props) => {
 	return (
 		<>
-			<Header />
-			<Register />
+			<Header props={props} />
+			<Register props={props} />
 		</>
 	);
 };

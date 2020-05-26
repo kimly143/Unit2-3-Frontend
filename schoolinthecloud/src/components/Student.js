@@ -1,13 +1,22 @@
-import React from 'react';
-import Register from './forms/Register';
-import Header from './header/Header';
+import React, { useState, useEffect } from 'react';
+import { apiAuth } from '../utils/apiAuth';
 
-const Student = () => {
+const Student = (props) => {
+	const [student, setStudent] = useState({});
+
+	useEffect(() => {
+		apiAuth()
+			.get('/student')
+			.then((res) => {
+				setStudent(res.data);
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
 	return (
-		<>
-			<Header />
-			<Register />
-		</>
+		<div>
+			<div>{student.name}</div>
+		</div>
 	);
 };
 export default Student;
