@@ -8,11 +8,11 @@ import Header from './components/header/Header';
 
 
 
-function App() {
+function App(props) {
 	return (
 		<Provider store={store}>
 			<div className="App">
-			<Header props={props} />
+				{/* <Header props={props} /> */}
 				<Volunteer />
 			</div>
 		</Provider>
