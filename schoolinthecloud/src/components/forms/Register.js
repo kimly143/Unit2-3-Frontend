@@ -4,14 +4,14 @@ import axios from 'axios';
 
 // import styler class for styled components
 import Styler from "../../assets/styles/styledComponents/styleClass";
+import Button from "../buttons/Button";
 
 export default function Register(props){
 
     // create new instance of styler class
     const style = new Styler();
 
-    //Used to test field validation with taken username values from backend.
-    const testerFieldForUsernameAvailability = ['thisss','isaaa','tester'];
+
 
     // set up yup validation
     const formSchema_Student = yup.object().shape({
@@ -374,7 +374,7 @@ export default function Register(props){
 
             </label>
 
-            <style.Button
+            <Button
                 text="Register"
                 type = "submit"
                 margin="10px auto"

@@ -11,23 +11,17 @@ const Navigation = (props) => {
 	return (
 		<>
 			<Router>
-				<div>
-					<nav>
-						<ul>
-							<li>
-								<Link to="/">Home</Link>
-							</li>
-							<li>
-								<Link to="/protected">Volunteers</Link>
-							</li>
-							<li>
-								<Link to="/protected">Students</Link>
-							</li>
-							<li>
-								<Link to="/login">Login</Link>
-							</li>
-						</ul>
-					</nav>
+
+				<Link to="/" className="linkSt">Home</Link>
+
+
+				<Link to="/protected" className="linkSt">Volunteers</Link>
+
+				<Link to="/protected" className="linkSt">Students</Link>
+
+				<Link to="/login" className="linkSt" onClick={props.clickHandler}>Login</Link>
+
+
 					<Switch>
 						<PrivateRoute exact path="/" component={Home} />
 						<PrivateRoute
@@ -42,9 +36,14 @@ const Navigation = (props) => {
 							component={Volunteer}
 							props={props}
 						/>
-						<Route exact path="/login" component={SignInForm} props={props} />
+						{/*<Route exact path="/login" component={SignInForm} props={props}	/>*/}
+						<Route exact path="/login" >
+
+							<SignInForm props={props} signInState = {props.signInState}/>
+
+						</Route>
 					</Switch>
-				</div>
+
 			</Router>
 		</>
 	);
