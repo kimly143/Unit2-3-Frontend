@@ -75,44 +75,55 @@ export default function SignInForm(props) {
 		validate(e);
 		setFormState({ ...formState, [e.target.name]: e.target.value });
 	};
+	console.log(props);
 
 	return (
-		<form onSubmit={formSubmit} className="signInForm">
-			<h2 className="signInTitle">Sign In</h2>
+		<>
+		{props.signInState === true ?
+			<form onSubmit={formSubmit} className="signInForm">
+				<h2 className="signInTitle">Sign In</h2>
 
-			<label htmlFor="userName">
-				Username:
-				<input
-					className="signInInput"
-					type="text"
-					name="userName"
-					id="userName"
-					value={formState.userName}
-					onChange={inputChange}
-				/>
-			</label>
+				<label htmlFor="userName">
+					Username:
+					<input
+						className="signInInput"
+						type="text"
+						name="userName"
+						id="userName"
+						value={formState.userName}
+						onChange={inputChange}
+					/>
+				</label>
 
-			{errorState.userName.length > 0 ? (
-				<p className="error">{errorState.userName}</p>
-			) : null}
+				{errorState.userName.length > 0 ? (
+					<p className="error">{errorState.userName}</p>
+				) : null}
 
-			<label htmlFor="password">
-				Password:
-				<input
-					className="signInInput"
-					type="password"
-					name="password"
-					id="password"
-					value={formState.password}
-					onChange={inputChange}
-				/>
-			</label>
+				<label htmlFor="password">
+					Password:
+					<input
+						className="signInInput"
+						type="password"
+						name="password"
+						id="password"
+						value={formState.password}
+						onChange={inputChange}
+					/>
+				</label>
 
-			{errorState.password.length > 0 ? (
-				<p className="error">{errorState.password}</p>
-			) : null}
+				{errorState.password.length > 0 ? (
+					<p className="error">{errorState.password}</p>
+				) : null}
 
-			<Button text="login" type="submit" margin="10px auto" />
-		</form>
+				<Button text="login" type="submit" margin="10px auto" />
+			</form>
+			:
+			<></>
+
+		}
+
+
+
+			</>
 	);
 }
