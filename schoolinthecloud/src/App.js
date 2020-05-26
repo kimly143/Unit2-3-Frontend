@@ -1,20 +1,15 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './assets/styles/css/index.css';
 
 // import components
+import Header from './components/header/Header';
 
-import Header from "./components/headers/header";
-
-
-function App() {
-
-
-
-	return <div className="App">
-
-		<Header />
-
-	</div>;
+function App(props) {
+	return (
+		<div className="App">
+			<Header props={props} />
+		</div>
+	);
 }
 
 export default App;

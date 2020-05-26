@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
-import Home from './Home';
-import Volunteers from './Volunteers';
-import Students from './Students';
-import SignInForm from './forms/SignInForm';
+import PrivateRoute from '../PrivateRoute';
+import Home from '../containers/Home';
+import Volunteer from '../Volunteer';
+import Student from '../Student';
+import SignInForm from '../forms/SignInForm';
+import Linked from './Linked';
 
 const Navigation = (props) => {
 	return (
@@ -32,13 +33,13 @@ const Navigation = (props) => {
 						<PrivateRoute
 							exact
 							path="/protected"
-							component={Students}
+							component={Student}
 							props={props}
 						/>
 						<PrivateRoute
 							exact
 							path="/protected"
-							component={Volunteers}
+							component={Volunteer}
 							props={props}
 						/>
 						<Route exact path="/login" component={SignInForm} props={props} />
