@@ -8,7 +8,7 @@ import Button from '../buttons/Button';
 import Text from '../styled/Text';
 import Image from '../styled/Image';
 import SignInForm from '../forms/SignInForm';
-import Register from '../forms/Register';
+import Register from '../forms/Register.js';
 
 export default function Header(props) {
 	// const style = new Styler();
@@ -19,12 +19,15 @@ export default function Header(props) {
 
 	// This function will disable modal popup of sign up and register windows respectively on body click
 	const bodyClicker = (e) => {
+		console.log("bodyClicked");
 		return e.target.className === 'headliner' && signInState && !registerState
 			? setSignInState(!signInState)
 			: e.target.className === 'headliner' && registerState && !signInState
 			? setRegisterState(!registerState)
 			: null;
 	};
+
+	console.log(signInState);
 
 	// Shows the signin window and ensures the register state is set to false
 	const signInClick = (e) => {
@@ -44,12 +47,13 @@ export default function Header(props) {
 				{/*Left side title in header-nav*/}
 				<section className="leftNav">
 					<Text
-						fontSize="2rem"
+						fontSize="30px"
 						height="100%"
-						letterSpacing="normal"
+						letterSpacing="2px"
 						color="#fff"
 						fontFamily="gPro"
 						lineHeight="60px"
+						text="School in the Cloud"
 					>
 						School in the Cloud{' '}
 					</Text>
@@ -58,15 +62,17 @@ export default function Header(props) {
 					<Image
 						url={cloud}
 						margin="auto 0 auto 10px"
-						height="100px"
-						width="100px"
+
 					/>
 				</section>
 
 				{/*Right side of header used for nav links*/}
 				{/* Added Navigation compoent for routing*/}
 				<section className="rightNav">
-					<Navigation props={props} />
+					<Navigation props={props} clickHandler={signInClick}
+					signInState = {signInState}
+					registerState = {registerState}
+					/>
 				</section>
 			</nav>
 
@@ -100,7 +106,7 @@ export default function Header(props) {
 							text="Get Started"
 							bgColor="#00aced"
 							margin="10px auto"
-							clickHandler={signInClick}
+							clickHandler={registerClick}
 						/>
 					</>
 				)}
