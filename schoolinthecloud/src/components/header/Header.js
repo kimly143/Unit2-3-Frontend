@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import cloud from '../../assets/images/cloud.webp';
 import Navigation from './Navigation';
+import { connect } from 'react-redux';
+import { addNewStudent } from '../../store/actions/index';
 
 // Import Styled Components
 import Button from '../buttons/Buttons';
@@ -10,7 +12,7 @@ import Image from '../styled/Image';
 import SignInForm from '../forms/SignInForm';
 import Register from '../forms/Register.js';
 
-export default function Header(props) {
+const Header = (props) => {
 	// States used to manage if signin/register windows should be mounted
 	const [signInState, setSignInState] = useState(false);
 	const [registerState, setRegisterState] = useState(false);
@@ -104,4 +106,14 @@ export default function Header(props) {
 			</section>
 		</header>
 	);
-}
+};
+
+const mapStateToProps = (state) => {
+	return {
+		...state,
+		isLoading: state.isLoading,
+		isUpdating: state.isUpdating,
+		data: state.data,
+	};
+};
+export default connect(mapStateToProps, { addNewStudent })(Header);
