@@ -7,6 +7,8 @@ import Styler from "../../assets/styles/styledComponents/styleClass";
 import SignIn from "../forms/signin";
 import Register from "../forms/register";
 
+import Admin from "../admin/Admin";
+
 export default function Header(props){
 
     const style = new Styler();
@@ -127,7 +129,7 @@ export default function Header(props){
                 }
 
 
-
+                    <Admin />
 
             </section>
 
