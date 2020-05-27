@@ -1,13 +1,264 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+  background-image: url("../../images/student.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 60px;
+  justify-content: space-around;
+  align-content: center;
+}
+header nav .leftNav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 100%;
+  margin-left: 3%;
+}
+header nav .rightNav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  height: 100%;
+  align-content: center;
+  justify-content: space-around;
+}
+header .headliner {
+  height: calc(100% - 60px);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+.linkSt {
+  display: flex;
+  flex-wrap: wrap;
+  height: 15px;
+  transition: 0.25s all ease-in-out;
+  margin: auto;
+  letter-spacing: 2px;
+  font-family: "gPro";
+  text-decoration: none;
+  font-size: 15px;
+  color: #fff;
+}
+.linkSt:hover {
+  cursor: pointer;
+  transition: 0.25s all ease-in-out;
+  color: #00aced;
+}
+@font-face {
+  font-family: 'gPro';
+  src: url('../css/gProRegular.woff2') format('woff2'), url('../css/gProRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gProItalic';
+  src: url('../css/gProItalic.woff2') format('woff2'), url('../css/gProItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima_novathin';
+  src: url('../css/proximanovat-thin-webfont.woff2') format('woff2'), url('../css/proximanovat-thin-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima_novaregular';
+  src: url('../css/proximanova-regular-webfont.woff2') format('woff2'), url('../css/proximanova-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.signInForm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 70px;
+  border-radius: 9px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.signInForm .signInTitle {
+  width: 100%;
+  font-family: 'gPro';
+  font-size: 30px;
+  letter-spacing: 3px;
+  padding-left: 30px;
+  color: black;
+}
+.signInForm .signInInput {
+  width: 300px;
+}
+.registerForm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 900px;
+  max-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 9px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.registerForm .signInTitle {
+  width: 100%;
+  font-family: 'gPro';
+  font-size: 30px;
+  letter-spacing: 3px;
+  padding-left: 30px;
+  color: black;
+  height: 30px;
+}
+.registerForm .signInInput {
+  width: 300px;
+}
+.registerForm .registerLabel {
+  height: 70px;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.registerForm p {
+  display: block;
+  width: 324px;
+  text-align: left;
+  margin: 0 auto;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+html {
+  font-size: 62.5%;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+form {
+  display: flex;
+  margin: 0 auto;
+}
+label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  margin: 10px 0;
+  font-size: 1.4rem;
+  width: 100%;
+}
+input,
+select,
+textarea {
+  margin: 5px 0 0;
+  display: block;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  background-color: white;
+}
+select {
+  height: 40px;
+  width: 325px;
+}
+select:focus {
+  outline: none;
+  border-color: #1ee7e2;
+}
+input:focus {
+  outline: none;
+  border-color: #1ee7e2;
+}
+input:placeholder {
+  color: #a8b2b2;
+}
+button {
+  width: 150px;
+  display: inline-block;
+  padding: 8px 11px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  background-color: #4dd0e1;
+  background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+  background-image: none;
+  background-color: #4dd0e1;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+button:disabled {
+  background-image: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
+}
+.error {
+  font-size: 12px;
+  width: 100%;
+  color: red;
+}
+.terms {
+  display: inline-block;
+  align-self: self-start;
+}
+.terms input {
+  width: 15px;
+  display: inline-block;
+  margin-right: 5px;
+  text-align: left;
+}
+input[type='checkbox'] {
+  text-align: left;
+}
+pre {
+  font-size: 20px;
 }
