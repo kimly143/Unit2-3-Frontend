@@ -71,7 +71,7 @@ export default function Volunteer() {
 	//const [ token, setToken ] = useAuthToken();
 
 	//using async
-	const submitHandler = (event) => {
+	const submitHandler = async (event) => {
 		event.preventDefault();
 		console.log(formState);
 		// making a request to server for login, sending formState contain username and password to server
