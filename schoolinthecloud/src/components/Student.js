@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { apiAuth } from "../utils/apiAuth";
-import { updateStudent } from "./actions/index";
+import { updateStudent } from "../store/actions/studentActions";
 import { connect } from "react-redux";
 
 const Student = (props) => {
-  const [student, setStudent] = useState([]);
-  const [volunteer, setVolunteer] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
 
   useEffect(() => {
     apiAuth()
-      .get("/student")
+      .get("/student/view")
       .then((res) => {
         console.log(res);
-        setStudent(res.data);
+        setStudents(res.data);
       })
+      .catch((err) => console.log(err, "Can't find student"));
+  }, []);
+  useEffect(() => {
+    apiAuth()
       .get("/volunteer")
       .then((res) => {
         console.log(res);
-        setVolunteer(res.data);
+        setVolunteers(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err, "No volunteers for you"));
   }, []);
   const updateStudent = (e) => {
     e.preventDefault();
@@ -27,10 +31,18 @@ const Student = (props) => {
     props.updateStudent(props.student);
   };
   return (
-    <div>
-      <div>{student.name}</div>
-      <button onClick={updateStudent}>Update Profile</button>
-    </div>
+    <>
+      <div>
+        {students.map((student) => {
+          return (
+            <li key={student.id}>
+              {`${student.firstName} ${student.lastName}`}
+            </li>
+          );
+        })}
+        <button onClick={updateStudent}>Update Profile</button>
+      </div>
+    </>
   );
 };
 const mapStateToProps = (state) => {
