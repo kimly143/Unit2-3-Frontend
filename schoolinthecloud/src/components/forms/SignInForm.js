@@ -1,119 +1,113 @@
-import React, { useState, useEffect } from 'react';
-import * as yup from 'yup';
-import axios from 'axios';
-import Button from '../buttons/Buttons';
+import React, { useState, useEffect } from "react";
+import * as yup from "yup";
+import { apiAuth } from "../../utils/apiAuth";
+// import changeHandler from "../../helpers/changeHandler";
+// import Button from "../buttons/Buttons";
 
 export default function SignInForm(props) {
-	// set up yup validation
-	const formSchema = yup.object().shape({
-		userName: yup
-			.string()
-			.required('Please enter your username')
-			.min(4, 'Username should be longer than 4 characters'),
-		password: yup
-			.string()
-			.required('Please enter your password')
-			.min(3, 'Password should be longer than 3 characters'),
-	});
+  // Set up yup validation schema
+  const formSchema = yup.object().shape({
+    userName: yup
+      .string()
+      .required("Please enter your username")
+      .min(4, "Username should be longer than 4 characters"),
+    password: yup
+      .string()
+      .required("Please enter your password")
+      .min(3, "Password should be longer than 3 characters"),
+  });
 
-	// Form state and error state respectively
-	const [formState, setFormState] = useState({
-		userName: '',
-		password: '',
-	});
+  // Form state and error state respectively
+  const [formState, setFormState] = useState({
+    userName: "",
+    password: "",
+  });
 
-	const [errorState, setErrorState] = useState({
-		userName: '',
-		password: '',
-	});
+  const [errorState, setErrorState] = useState({
+    userName: "",
+    password: "",
+  });
 
-	// validation on input change
-	const validate = (e) => {
-		yup.reach(formSchema, e.target.name)
-			.validate(e.target.value)
-			.then((valid) => {
-				setErrorState({
-					...errorState,
-					[e.target.name]: '',
-				});
-			})
-			.catch((err) => {
-				setErrorState({
-					...errorState,
-					[e.target.name]: err.errors[0],
-				});
-			});
-	};
+  // validation on input change
+  const validate = (e) => {
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setErrorState({
+          ...errorState,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrorState({
+          ...errorState,
+          [e.target.name]: err.errors[0],
+        });
+      });
+  };
+  const inputChange = (e) => {
+    e.persist();
+    console.log(e.target.value);
+    validate(e);
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
 
-	const formSubmit = (e) => {
-		console.log('submit');
-		console.log(formState);
-		e.preventDefault();
-		axios
-			.post('/login', { formState })
-			.then((response) => {
-				console.log(response);
-			})
-			.then((response) => {
-				localStorage.setItem('token', response.data.payload);
-				props.history.push('/protected');
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
+  const formSubmit = (e) => {
+    // console.log("submit");
+    // console.log(formState);
+    e.preventDefault();
+    apiAuth()
+      .post("/login", { formState })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("token", response.data.token);
+        // props.history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-	const inputChange = (e) => {
-		e.persist();
-		console.log(e.target.value);
-		validate(e);
-		setFormState({ ...formState, [e.target.name]: e.target.value });
-	};
-	console.log(props);
+  return (
+    <>
+      <form onSubmit={formSubmit} className="signInForm">
+        <h2 className="signInTitle">Sign In</h2>
 
-	return (
-		<>
-			{props.signInState === true ? (
-				<form onSubmit={formSubmit} className="signInForm">
-					<h2 className="signInTitle">Sign In</h2>
+        <label htmlFor="userName">
+          Username:
+          <input
+            className="signInInput"
+            type="text"
+            name="userName"
+            id="userName"
+            value={formState.userName}
+            onChange={inputChange}
+          />
+        </label>
 
-					<label htmlFor="userName">
-						Username:
-						<input
-							className="signInInput"
-							type="text"
-							name="userName"
-							id="userName"
-							value={formState.userName}
-							onChange={inputChange}
-						/>
-					</label>
+        {errorState.userName.length > 0 ? (
+          <p className="error">{errorState.userName}</p>
+        ) : null}
 
-					{errorState.userName.length > 0 ? (
-						<p className="error">{errorState.userName}</p>
-					) : null}
+        <label htmlFor="password">
+          Password:
+          <input
+            className="signInInput"
+            type="password"
+            name="password"
+            id="password"
+            value={formState.password}
+            onChange={inputChange}
+          />
+        </label>
 
-					<label htmlFor="password">
-						Password:
-						<input
-							className="signInInput"
-							type="password"
-							name="password"
-							id="password"
-							value={formState.password}
-							onChange={inputChange}
-						/>
-					</label>
+        {errorState.password.length > 0 ? (
+          <p className="error">{errorState.password}</p>
+        ) : null}
 
-					{errorState.password.length > 0 ? (
-						<p className="error">{errorState.password}</p>
-					) : null}
-
-					<Button text="login" type="submit" margin="10px auto" />
-				</form>
-			) : (
-				<></>
-			)}
-		</>
-	);
+        <button type="submit">Login</button>
+      </form>
+    </>
+  );
 }
