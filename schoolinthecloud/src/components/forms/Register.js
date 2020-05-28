@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
-import axios from 'axios';
 
 // Styled components
 import Button from '../buttons/Buttons';
 import Form from '../styled/Form';
+import {apiAuth} from '../../utils/apiAuth'
 
 export default function Register(props) {
 	const [formState, setFormState] = useState({selector: '',
@@ -27,6 +27,7 @@ export default function Register(props) {
 		address: '',
 		time: '',
 		terms: false,});
+
 
 	//Used to test field validation with taken username values from backend.
 	const testerFieldForUsernameAvailability = ['thisss', 'isaaa', 'tester'];
@@ -89,11 +90,12 @@ export default function Register(props) {
 	};
 
 	const formSubmit = (e) => {
+		const axios = apiAuth();
 		e.preventDefault();
 		// If volunteer is selected post to volunteer api else submit to student api
 		formState.selector === 'volunteer'
 			? axios
-					.post('')
+					.post('volunteer')
 					.then((response) => {
 						console.log(response);
 					})
