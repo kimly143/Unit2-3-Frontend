@@ -43,23 +43,13 @@ const Header = (props) => {
 
   return (
     <header>
-      <nav>
+      <section className="topNav">
         {/*Left side title in header-nav*/}
         <section className="leftNav">
-          <Text
-            fontSize="30px"
-            height="100%"
-            letterSpacing="2px"
-            color="#fff"
-            fontFamily="gPro"
-            lineHeight="60px"
-            text="School in the Cloud"
-          >
-            <p>School in the Cloud</p>
-          </Text>
+          <h1 className="textStyler">School in the Cloud</h1>
 
           {/*Image for School in the cloud logo*/}
-          <Image url={cloud} margin="auto 0 auto 10px" />
+          <Image url={cloud} margin="auto 0 auto 10px" height="40px" width="50px" />
         </section>
 
         {/*Right side of header used for nav links*/}
@@ -67,11 +57,11 @@ const Header = (props) => {
         <section className="rightNav">
           <Navigation />
         </section>
-      </nav>
+      </section>
 
-      <section className="headliner">
-        If signin or register state is true will remove h1 text and subtext and
-        mount signin or register window
+      <section className="headliner" onClick={bodyClicker}>
+        {/*If signin or register state is true will remove h1 text and subtext and*/}
+        {/*mount signin or register window*/}
         {signInState && !registerState ? (
           <SignInForm />
         ) : !signInState && registerState ? (
@@ -79,29 +69,23 @@ const Header = (props) => {
         ) : (
           <>
             <Text
-              margin="auto auto 0 auto"
-              fontSize="40px"
-              fontFamily="proxima_novaregular"
+
               text="Educational Mentoring Service for children who need it most "
-              color="white"
+
             />
 
-            <Text
-              width="100%"
-              margin="0 auto"
-              fontSize="25px"
-              fontFamily="gProItalic"
-              text="Our hope is to lighten the burden of overworked teachers and parents"
-              textAlign="center"
-              color="white"
-            />
+            <h4 className="subTitler">Our hope is to lighten the burden of overworked teachers and parents</h4>
+
+
+
+
 
             <Button
-              bgColor="#00aced"
-              margin="10px auto"
               clickHandler={registerClick}
+              text="Get Started!"
+
             >
-              Get Started!
+
             </Button>
           </>
         )}

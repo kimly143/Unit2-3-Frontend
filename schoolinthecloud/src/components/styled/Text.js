@@ -1,20 +1,14 @@
 import React from 'react';
 import Styled from 'styled-components';
 
-const Text = (props) => {
-	const Text = Styled.div`
-                height:${props.height};
-                width: ${props.width};
-                font-size: ${props.fontSize};
-                letter-spacing: ${props.letterSpacing};
-                line-height: ${props.lineHeight};
-                color: ${props.color};
-                margin: ${props.margin};
-                font-family: ${props.fontFamily};
-                font-weight: ${props.fontWeight};
-                text-align:${props.textAlign};
+
+const Texter = Styled.div`
+                
         }`;
 
-	return <Text>{props.text}</Text>;
+const Text = (props) => {
+
+
+	return <Texter className="titler">{props.text}</Texter>;
 };
 export default Text;
