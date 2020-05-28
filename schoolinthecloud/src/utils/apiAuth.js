@@ -1,12 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const axiosWithAuth = () => {
-	const token = localStorage.getItem('token');
+export const apiAuth = () => {
+  const token = localStorage.getItem("token");
 
-	return axios.create({
-		baseURL: 'https://build-week-school-in-the-cloud.herokuapp.com/api',
-		headers: {
-			authorization: token,
-		},
-	});
+  return axios.create({
+    baseURL: "https://build-week-school-in-the-cloud.herokuapp.com/api",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
 };

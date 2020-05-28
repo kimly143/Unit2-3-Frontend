@@ -2,7 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 
 const Button = (props) => {
-	const Button = Styled.button`
+	Styled.button`
         width: 150px;
         display: inline-block;
         padding: 8px 11px;
@@ -30,13 +30,7 @@ const Button = (props) => {
             background-color: #4dd0e1;
             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 
-        }
-    `;
-
-	return (
-		<Button onClick={props.clickHandler} type={props.type}>
-			{props.text}
-		</Button>
-	);
+        }`;
+	return Button;
 };
 export default Button;
