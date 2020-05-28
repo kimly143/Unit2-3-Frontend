@@ -7,8 +7,26 @@ import Button from '../buttons/Buttons';
 import Form from '../styled/Form';
 
 export default function Register(props) {
-	const [formState, setFormState] = useState({});
-	const [errorState, setErrorState] = useState({});
+	const [formState, setFormState] = useState({selector: '',
+		userName: '',
+		password: '',
+		nameFirst: '',
+		nameLast: '',
+		email: '',
+		phone: '',
+		address: '',
+		time: '',
+		terms: false,});
+	const [errorState, setErrorState] = useState({selector: '',
+		userName: '',
+		password: '',
+		nameFirst: '',
+		nameLast: '',
+		email: '',
+		phone: '',
+		address: '',
+		time: '',
+		terms: false,});
 
 	//Used to test field validation with taken username values from backend.
 	const testerFieldForUsernameAvailability = ['thisss', 'isaaa', 'tester'];
@@ -75,10 +93,10 @@ export default function Register(props) {
 	};
 
 	return (
-		<Form onSubmit={formSubmit} className="registerForm">
+		<form onSubmit={formSubmit} className="registerForm">
 			<h2 className="signInTitle">Register</h2>
 
-			<label htmlFor="selector" className="registerLabel">
+			<label htmlFor="selector" className="registerLabelSelector">
 				Student or Volunteer?
 				<select
 					name="selector"
@@ -238,85 +256,8 @@ export default function Register(props) {
 				Terms Of Service
 			</label>
 
-			<label htmlFor="email" className="registerLabel">
-				<p>Email:</p>
-
-				<input
-					className="signInInput"
-					type="email"
-					name="email"
-					id="email"
-					value={formState.email}
-					onChange={inputChange}
-				/>
-
-				{errorState.email.length > 0 ? (
-					<p className="error">{errorState.email}</p>
-				) : null}
-			</label>
-
-			<label htmlFor="phone" className="registerLabel">
-				<p>Phone Number:</p>
-
-				<input
-					className="signInInput"
-					type="number"
-					name="phone"
-					id="phone"
-					value={formState.phone}
-					onChange={inputChange}
-				/>
-
-				{errorState.phone.length > 0 ? (
-					<p className="error">{errorState.phone}</p>
-				) : null}
-			</label>
-
-			<label htmlFor="address" className="registerLabel">
-				<p>Address:</p>
-
-				<input
-					className="signInInput"
-					type="address"
-					name="address"
-					id="address"
-					value={formState.address}
-					onChange={inputChange}
-				/>
-
-				{errorState.address.length > 0 ? (
-					<p className="error">{errorState.address}</p>
-				) : null}
-			</label>
-
-			<label htmlFor="time" className="registerLabel">
-				<p>Time Available:</p>
-
-				<select name="time" id="time" onChange={inputChange} value={formState.time}>
-					<option value="6am">6:00AM - 9:00AM</option>
-
-					<option value="9am">9:00AM - 12:00PM</option>
-
-					<option value="12pm">12:00PM - 3:00PM</option>
-
-					<option value="3pm">3:00PM - 6:00PM</option>
-
-					<option value="6pm">6:00PM - 9:00PM</option>
-				</select>
-			</label>
-
-			<label htmlFor="terms">
-				<input
-					type="checkbox"
-					id="terms"
-					name="terms"
-					checked={formState.terms}
-					onChange={inputChange}
-				/>
-				Terms Of Service
-			</label>
 
 			<Button text="Register" type="submit" margin="10px auto" />
-		</Form>
+		</form>
 	);
 }
