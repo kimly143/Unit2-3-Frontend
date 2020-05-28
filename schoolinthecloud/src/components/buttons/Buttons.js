@@ -1,8 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 
-const Button = (props) => {
-	Styled.button`
+const Buttoner = Styled.button`
         width: 150px;
         display: inline-block;
         padding: 8px 11px;
@@ -12,18 +11,12 @@ const Button = (props) => {
         border-radius: 5px;
         letter-spacing: 2px;
         outline: none;
-        background-color: #4dd0e1;
+        background-color: #00aced;
         background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
         color: black;
         cursor: pointer;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        margin: ${props.margin};
-        width:${props.width};
-        height:${props.height};
-        font-size:${props.fontSize};
-        background-color: ${props.bgColor};
-        bgImage: ${props.bgImage};
-        color: ${props.color};
+        margin: 10px auto;
 
         &:hover{
             background-image: none;
@@ -31,6 +24,11 @@ const Button = (props) => {
             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 
         }`;
-	return Button;
-};
-export default Button;
+
+export default function Button(props) {
+
+	return (
+		<Buttoner onClick={props.clickHandler}>{props.text}</Buttoner>
+	)
+}
+
