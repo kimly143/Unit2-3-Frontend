@@ -7,8 +7,6 @@ import Student from "./components/Student";
 import SignInForm from "./components/forms/SignInForm";
 import Volunteer from "./components/Volunteer";
 
-
-
 function App(props) {
   return (
     <div className="App">
