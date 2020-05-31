@@ -7,7 +7,7 @@ import VolunteerDashboard from './VolunteerDashboard';
 const Volunteer = () => {
 	return (
 		<>
-			{/* <Register /> */}
+			<Register />
 			<VolunteerDashboard />
 		</>
 	);

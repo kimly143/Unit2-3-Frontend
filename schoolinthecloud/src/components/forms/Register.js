@@ -95,7 +95,7 @@ export default function Register(props) {
 		// If volunteer is selected post to volunteer api else submit to student api
 		formState.selector === 'volunteer'
 			? axios
-					.post('volunteer')
+					.post('register')
 					.then((response) => {
 						console.log(response);
 					})

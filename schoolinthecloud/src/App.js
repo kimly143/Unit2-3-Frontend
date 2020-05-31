@@ -21,8 +21,8 @@ function App(props) {
             path="/movies/:id"
             render={(props) => (
               <Register {...props} saveToList={addToSavedList} />
-            )}
-          /> */}
+            )} */}
+          />
         </Switch>
       </Router>
     </div>
