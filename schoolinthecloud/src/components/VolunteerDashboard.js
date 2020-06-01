@@ -13,8 +13,6 @@ const VolunteerDBoard = styled.div`
 		top: 50%;
 		width: 90vw;
 		height: 80vh;
-		display: flex;
-		flex-wrap: wrap;
 		justify-content: begin;
 		align-content: left;
 		transform: translate(-50%, -50%);
@@ -29,7 +27,7 @@ export default function VolunteerDashboard() {
     const dispatch = useDispatch();
     
 	useEffect(() => {
-        dispatch(getVolunteerData());
+        dispatch(getVolunteerData(9));
     }, []);
 
 	

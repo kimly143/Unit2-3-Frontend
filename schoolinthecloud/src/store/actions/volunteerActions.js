@@ -3,7 +3,6 @@ import { apiAuth } from '../../utils/apiAuth';
 export const GET_VOLUNTEER_DATA_START = 'GET_VOLUNTEER_DATA_START';
 export const GET_VOLUNTEER_DATA_SUCCESS = 'GET_VOLUNTEER_DATA_SUCCESS';
 export const GET_VOLUNTEER_DATA_FAIL = 'GET_VOLUNTEER_DATA_FAIL';
-
 export const CREATE_NEW_VOLUNTEER = 'CREATE_NEW_VOLUNTEER';
 export const UPDATE_VOLUNTEER = 'UPDATE_VOLUNTEER';
 export const DELETE_VOLUNTEER = 'DELETE_VOLUNTEER';
@@ -11,7 +10,8 @@ export const DELETE_VOLUNTEER = 'DELETE_VOLUNTEER';
 export const getVolunteerData = (id) => (dispatch) => {
 	dispatch({ type: GET_VOLUNTEER_DATA_START });
 	apiAuth()
-		.get(`/volunteer/${id}/tasks`)
+        // .get(`/volunteer/${id}/tasks`)
+        .get(`/volunteer/11`)
 		.then((res) => {
 			console.log(res);
 			dispatch({ type: GET_VOLUNTEER_DATA_SUCCESS, payload: res.data });
