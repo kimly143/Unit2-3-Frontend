@@ -10,6 +10,7 @@ const TaskContainer = styled.div`
 	display: flex;
 	flex-direction: column;
     border-radius: 10px;
+    margin: 10px;
 `;
 
 const VTask = styled.div`
@@ -19,6 +20,8 @@ const VTask = styled.div`
 
 const ButtonToolbar = styled.div`
     padding: 5px;
+    margin:0 auto;
+    font-size: 0.5em;
 `;
 
 export default function VolunteerTask(props) {
@@ -36,7 +39,7 @@ export default function VolunteerTask(props) {
 				<p>Assigned to : {props.task.assigned_to}</p>
 				<p>Description : {props.task.description}</p>
 				<p>Due date : {props.task.due_date}</p>
-				<p>Completed: {props.task.completed}</p>
+				<p>Completed : {props.task.completed}</p>
 			</VTask>
 			<ButtonToolbar>
 				<button onClick={completeHandler}>Complete Task</button>

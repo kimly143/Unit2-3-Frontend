@@ -1,15 +1,15 @@
 import { apiAuth } from '../../utils/apiAuth';
 
+//fetching volunteer tasks
 export const GET_VOLUNTEER_DATA_START = 'GET_VOLUNTEER_DATA_START';
 export const GET_VOLUNTEER_DATA_SUCCESS = 'GET_VOLUNTEER_DATA_SUCCESS';
 export const GET_VOLUNTEER_DATA_FAIL = 'GET_VOLUNTEER_DATA_FAIL';
-export const CREATE_NEW_VOLUNTEER = 'CREATE_NEW_VOLUNTEER';
-export const UPDATE_VOLUNTEER = 'UPDATE_VOLUNTEER';
-export const DELETE_VOLUNTEER = 'DELETE_VOLUNTEER';
 
+//completing a task
 export const COMPLETE_VOLUNTEER_TASK = 'COMPLETE_VOLUNTEER_TASK';
 export const COMPLETE_VOLUNTEER_TASK_FAILED = 'COMPLETE_VOLUNTEER_TASK_FAILED';
 
+//list of fake tasks, just copy from database over.
 const FAKE_TASKS = [
 	{
 		task_id: 25,
@@ -64,6 +64,7 @@ const FAKE_TASKS = [
 	}
 ];
 
+
 export const getVolunteerData = (id) => (dispatch) => {
 	dispatch({ type: GET_VOLUNTEER_DATA_START });
 	// old fetch code, commented becuase of issues getting user id for request
@@ -76,10 +77,14 @@ export const getVolunteerData = (id) => (dispatch) => {
 	// 		dispatch({ type: GET_VOLUNTEER_DATA_SUCCESS, payload: res.data });
 	// 	})
 	// 	.catch((err) => dispatch({ type: GET_VOLUNTEER_DATA_FAIL, payload: err }));
+
+	//setting payload: FAKE_TASKS because i dont have a list of tasks from database
 	dispatch({ type: GET_VOLUNTEER_DATA_SUCCESS, payload: FAKE_TASKS });
 };
 
 export const completeTask = (taskId) => (dispatch) => {
+	// this would be the request i make to complete the task if the server supported
+	// it
 	// apiAuth()
 	// 	.put(`/volunteer/tasks/${taskId}`, { completed: 1 })
 	// 	.then((res) => {

@@ -12,7 +12,8 @@ const initialState = {
 	error: ''
 };
 
-// Reducer needs Action & Copy of Current State
+// Reducer needs Action & Copy of Current State - Amber Chunn
+// renamed it to legacyReducer so i can use the name rootReducer - Kim Buck
 const legacyReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case GET_DATA_START:
@@ -39,4 +40,5 @@ const legacyReducer = (state = initialState, action) => {
 	}
 };
 
+//using reduceReducers to compose the reducer so i can build a normal slice reducer for volunteer
 export const rootReducer = reduceReducers(legacyReducer, volunteerReducer);

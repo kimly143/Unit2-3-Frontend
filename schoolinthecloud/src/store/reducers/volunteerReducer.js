@@ -1,9 +1,7 @@
 import {
 	GET_VOLUNTEER_DATA_SUCCESS,
 	GET_VOLUNTEER_DATA_FAIL,
-	CREATE_NEW_VOLUNTEER,
-	UPDATE_VOLUNTEER,
-	DELETE_VOLUNTEER,
+	
 	COMPLETE_VOLUNTEER_TASK
 } from '../actions/volunteerActions';
 
@@ -21,6 +19,7 @@ export default function volunteerReducer(state, action) {
 	}
 
 	switch (action.type) {
+		//tasklist from payload.
 		case GET_VOLUNTEER_DATA_SUCCESS:
 			return {
 				...state,
@@ -36,12 +35,14 @@ export default function volunteerReducer(state, action) {
 				isLoading: false,
 				error: 'something wrong...'
 			};
+
 		case COMPLETE_VOLUNTEER_TASK:
 			return {
 				...state,
 				volunteers: {
 					...state.volunteer,
 					taskList: state.volunteers.taskList.map((task) => {
+						//looking at the task which id matching with payload, and if it match, we marked it complete. if not return task unchange
 						if (task.task_id === action.payload) {
 							return {
 								...task,

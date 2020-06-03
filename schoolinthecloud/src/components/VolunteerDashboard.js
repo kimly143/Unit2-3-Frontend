@@ -31,7 +31,7 @@ export default function VolunteerDashboard() {
     }, []);
 
 	
-
+	//using useSelector to get task(s) hasnt completed
 	const tasks = useSelector(state => state.volunteers.taskList.filter(task => task.completed === 0));
 	return (
 		<VolunteerDBoard>
