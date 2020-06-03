@@ -32,7 +32,7 @@ export default function VolunteerDashboard() {
 
 	
 
-	const tasks = useSelector(state => state.volunteers.taskList);
+	const tasks = useSelector(state => state.volunteers.taskList.filter(task => task.completed === 0));
 	return (
 		<VolunteerDBoard>
 			<h1> Welcome to Volunteer Dashboard! </h1>

@@ -3,9 +3,11 @@ import {
 	GET_VOLUNTEER_DATA_FAIL,
 	CREATE_NEW_VOLUNTEER,
 	UPDATE_VOLUNTEER,
-	DELETE_VOLUNTEER
+	DELETE_VOLUNTEER,
+	COMPLETE_VOLUNTEER_TASK
 } from '../actions/volunteerActions';
 
+// fake tasks because no way to get user id for endpoint
 const initialState = {
 	taskList: []
 };
@@ -34,20 +36,22 @@ export default function volunteerReducer(state, action) {
 				isLoading: false,
 				error: 'something wrong...'
 			};
-		case CREATE_NEW_VOLUNTEER:
+		case COMPLETE_VOLUNTEER_TASK:
 			return {
 				...state,
-				volunteer: [ ...state, action.payload ]
-			};
-		case UPDATE_VOLUNTEER:
-			return {
-				...state,
-				volunteer: [ ...state.volunteer, action.payload ]
-			};
-		case DELETE_VOLUNTEER:
-			return {
-				...state,
-				volunteer: [ ...state.volunteer, action.payload ]
+				volunteers: {
+					...state.volunteer,
+					taskList: state.volunteers.taskList.map((task) => {
+						if (task.task_id === action.payload) {
+							return {
+								...task,
+								completed: 1
+							};
+						}
+
+						return task;
+					})
+				}
 			};
 
 		default:
