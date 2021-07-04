@@ -1,0 +1,11 @@
+ul {
+  margin: 0;
+  padding: 20px;
+  width: 50%;
+}
+ul li {
+  font-size: 1.5rem;
+  list-style-type: none;
+  margin: 10px;
+  color: #FF0000;
+}
